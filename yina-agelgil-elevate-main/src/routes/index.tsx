@@ -1,14 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ChevronRight, Heart, Leaf, ShieldCheck, Sparkles, Star, Utensils } from "lucide-react";
+import { ChevronRight, Heart, Leaf, Star, Utensils } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import heroImg from "@/assets/hero.webp";
 import doroImg from "@/assets/dish-doro.jpg";
 import beyaynetuImg from "@/assets/dish-beyaynetu.jpg";
 import kitfoImg from "@/assets/dish-kitfo.jpg";
-import weddingImg from "@/assets/event-wedding.jpg";
+import weddingImg from "@/assets/Weeding.jpg";
 import corporateImg from "@/assets/event-corporate.jpg";
+import memorialImg from "@/assets/Memorial.jpg";
+import birthdayImg from "@/assets/Birthday.jpg";
+import graduationImg from "@/assets/Graduation.jpg";
+import corporateEventsImg from "@/assets/corporate-events.jpg";
+import deliveryImg from "@/assets/fast-delivery.jpg";
+import qualityImg from "@/assets/kitfo.jpg";
+import nonFastingImg from "@/assets/non-fasting.jpg";
+import gallery1 from "@/assets/gallery1.jpg";
+import gallery2 from "@/assets/gallery2.jpg";
+import gallery3 from "@/assets/gallery3.webp";
+import gallery4 from "@/assets/gallery4.jpg";
+import gallery5 from "@/assets/gallery5.jpg";
+import gallery6 from "@/assets/gallery6.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,11 +45,11 @@ const fadeUp = {
 };
 
 const events = [
-  { am: "ለሰርግ", en: "Weddings", desc: "ለሕይወትዎ ልዩ ቀን የተዘጋጀ ሙሉ የአገልግል አገልግሎት።", icon: Heart },
-  { am: "ለሐዘን", en: "Funeral & Memorial", desc: "በታክት እና በትህትና የተዘጋጀ የሐዘን ምግብ አገልግሎት።", icon: Leaf },
-  { am: "ለልደት", en: "Birthdays", desc: "ለልደት ቀንዎ የተለየ ጣዕም እና አቀራረብ።", icon: Sparkles },
-  { am: "ለምርቃት", en: "Graduation", desc: "የስኬት ቀንዎን በሚገባ ለማክበር።", icon: Star },
-  { am: "ለድርጅት ዝግጅቶች", en: "Corporate Events", desc: "ለድርጅት ዝግጅቶች ሙያዊ የካተሪንግ አገልግሎት።", icon: Utensils },
+  { am: "ለሰርግ", en: "Weddings", desc: "የህይወትዎን ልዩ ቀን ዘና ብለው ሲያሳልፉ እንግዳዎቾን እንደ ራሳችን አድርገን እናስተናግድሎታለን ።", icon: Heart },
+  { am: "ለሐዘን", en: "Funeral & Memorial", desc: "አይበለውና ሀዘን ቢገጥምዎ ፤ እንግዳዎችን ሳይጨነቁ በእንክብካቤ ለመሸኘት እናግዝዎታለን ።", icon: Leaf },
+  { am: "ለልደት", en: "Birthdays", desc: "ለልደት ቀንዎ የተለየ ጣዕም እና አቀራረብ ያላቸው ምግቦችን እናዘጋጃለን ።", icon: Sparkles },
+  { am: "ለምርቃት", en: "Graduation", desc: "የስኬት ቀንዎን በሚገባ ለማክበር እኛ እናግዝዎ።", icon: Star },
+  { am: "ለድርጅት ዝግጅቶች", en: "Corporate Events", desc: "ለድርጅት ዝግጅቶች የኬተሪንግ አገልግሎት እንሰጣለን።", icon: Utensils },
 ];
 
 const dishes = [
@@ -54,9 +67,9 @@ const testimonials = [
 ];
 
 const trust = [
-  { icon: ShieldCheck, title: "የንፅህና ደረጃ", desc: "በከፍተኛ የንፅህና መስፈርቶች የተዘጋጀ።" },
-  { icon: Sparkles, title: "ዘመናዊ አቀራረብ", desc: "ባህላዊ ጣዕም ከዘመናዊ አቀራረብ ጋር።" },
-  { icon: Heart, title: "በፍቅር የተዘጋጀ", desc: "ለእያንዳንዱ እንግዳ ልዩ ትኩረት።" },
+  { icon: "🍽️", title: "ጥራት ያለው ምግብ", desc: "ከተመረጡ ግብዓቶች የተዘጋጀ ምግብ በልዩ ጣዕም እና በፍቅር እናቀርባለን።", img: qualityImg },
+  { icon: "🎉", title: "ለሁሉም ዝግጅቶች", desc: "ለሰርግ፣ ለልደት፣ ለምርቃት፣ ለሀዘን እና ለድርጅት ፕሮግራሞች ተስማሚ አገልግሎት እንሰጣለን።", img: nonFastingImg },
+  { icon: "🚚", title: "ከፈጣን እና ታማኝ ዴሊቨሪ ጋር", desc: "ትዕዛዝዎን በፍጥነት እና በጥንቃቄ ወደ ቦታዎ እናደርሳለን።", img: deliveryImg },
 ];
 
 function Home() {
@@ -169,13 +182,21 @@ function Home() {
                 key={t.title}
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="rounded-2xl glass p-8 shadow-soft transition hover:-translate-y-1"
+                className="group relative min-h-[280px] overflow-hidden rounded-2xl shadow-soft transition hover:-translate-y-1 hover:shadow-elegant"
               >
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-gold text-primary-foreground shadow-soft">
-                  <t.icon className="h-5 w-5" />
+                <img
+                  src={t.img}
+                  alt=""
+                  aria-hidden
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-gold opacity-20 transition duration-500 group-hover:scale-150" />
+                <div className="relative flex h-full min-h-[280px] flex-col justify-end p-6">
+                  <span className="text-3xl">{t.icon}</span>
+                  <h3 className="mt-3 font-am text-xl font-bold text-white">{t.title}</h3>
+                  <p className="mt-2 font-am text-sm text-white/80">{t.desc}</p>
                 </div>
-                <h3 className="mt-5 font-am text-xl font-bold">{t.title}</h3>
-                <p className="mt-2 font-am text-sm text-muted-foreground">{t.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -199,14 +220,44 @@ function Home() {
               transition={{ duration: 0.6, delay: i * 0.08 }}
               className="group relative overflow-hidden rounded-2xl bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-elegant"
             >
+              {i === 0 && (
+                <>
+                  <img src={weddingImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+                </>
+              )}
+              {i === 1 && (
+                <>
+                  <img src={memorialImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+                </>
+              )}
+              {i === 2 && (
+                <>
+                  <img src={birthdayImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+                </>
+              )}
+              {i === 3 && (
+                <>
+                  <img src={graduationImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+                </>
+              )}
+              {i === 4 && (
+                <>
+                  <img src={corporateEventsImg} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
+                </>
+              )}
               <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-gold opacity-10 transition group-hover:scale-150" />
-              <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary text-gold">
+              <div className={`grid h-12 w-12 place-items-center rounded-xl ${i < 5 ? "bg-white/15 text-white" : "bg-secondary text-gold"}`}>
                 <e.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-am text-2xl font-bold">{e.am}</h3>
-              <p className="text-xs uppercase tracking-widest text-muted-foreground">{e.en}</p>
-              <p className="mt-3 font-am text-sm text-muted-foreground">{e.desc}</p>
-              <Link to="/contact" className="mt-5 inline-flex items-center gap-1 font-am text-sm font-semibold text-gold">
+              <h3 className={`mt-5 font-am text-2xl font-bold ${i < 5 ? "text-white" : ""}`}>{e.am}</h3>
+              <p className={`text-xs uppercase tracking-widest ${i < 5 ? "text-white/70" : "text-muted-foreground"}`}>{e.en}</p>
+              <p className={`mt-3 font-am text-sm ${i < 5 ? "text-white/80" : "text-muted-foreground"}`}>{e.desc}</p>
+              <Link to="/contact" className={`mt-5 inline-flex items-center gap-1 font-am text-sm font-semibold ${i === 0 || i === 1 || i === 2 ? "text-gold" : "text-gold"}`}>
                 ይዘዙ <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </Link>
             </motion.div>
@@ -215,27 +266,31 @@ function Home() {
       </section>
 
       {/* GALLERY */}
-      <section className="mx-auto max-w-7xl px-6 pb-24 md:px-8">
-        <motion.div {...fadeUp} className="mb-10">
-          <p className="text-xs uppercase tracking-[0.25em] text-gold">Gallery</p>
-          <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">ከስራዎቻችን ጥቂቶቹ</h2>
-        </motion.div>
-        <div className="grid gap-4 md:grid-cols-3">
-          {[weddingImg, corporateImg, heroImg].map((img, i) => (
-            <motion.div
-              key={i}
-              {...fadeUp}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`overflow-hidden rounded-2xl shadow-soft ${i === 0 ? "md:row-span-2" : ""}`}
-            >
-              <img
-                src={img}
-                alt={`Ethiopian catering event setup ${i + 1} by Yina Agelgil`}
-                loading="lazy"
-                className="h-full w-full object-cover transition duration-700 hover:scale-105"
-              />
-            </motion.div>
-          ))}
+      <section className="overflow-hidden pb-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-8">
+          <motion.div {...fadeUp} className="mb-10">
+            <p className="text-xs uppercase tracking-[0.25em] text-gold">Gallery</p>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">ከስራዎቻችን ጥቂቶቹ</h2>
+          </motion.div>
+        </div>
+        <div className="relative">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
+          <div className="flex gap-6 animate-marquee">
+            {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery1, gallery2, gallery3, gallery4, gallery5, gallery6].map((img, i) => (
+              <div
+                key={i}
+                className="h-72 w-96 flex-shrink-0 overflow-hidden rounded-2xl shadow-soft"
+              >
+                <img
+                  src={img}
+                  alt={`Gallery image ${(i % 6) + 1}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import beyaynetuImg from "@/assets/dish-beyaynetu.jpg";
-import doroImg from "@/assets/dish-doro.jpg";
-import kitfoImg from "@/assets/dish-kitfo.jpg";
-import corporateImg from "@/assets/event-corporate.jpg";
+import fastingImg from "@/assets/gallery6.webp";
+import feastingImg from "@/assets/non-fasting.jpg";
+import specialImg from "@/assets/kitfo.jpg";
+import cateringImg from "@/assets/gallery3.webp";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -22,10 +22,10 @@ export const Route = createFileRoute("/menu")({
 });
 
 const categories = [
-  { id: "fast", label: "የጾም አገልግል", en: "Fasting", img: beyaynetuImg },
-  { id: "feast", label: "የፍስክ አገልግል", en: "Feasting", img: doroImg },
-  { id: "special", label: "ባህላዊ ልዩ", en: "Special", img: kitfoImg },
-  { id: "catering", label: "የኬተሪንግ አገልግሎት", en: "Catering Service", img: corporateImg },
+  { id: "fast", label: "የጾም አገልግል", en: "Fasting", img: fastingImg },
+  { id: "feast", label: "የፍስክ አገልግል", en: "Feasting", img: feastingImg },
+  { id: "special", label: "ባህላዊ ልዩ", en: "Special", img: specialImg },
+  { id: "catering", label: "የኬተሪንግ አገልግሎት", en: "Catering Service", img: cateringImg },
 ] as const;
 
 const fadeUp = {
@@ -55,7 +55,7 @@ function Menu() {
             transition={{ delay: 0.1 }}
             className="mt-3 font-am text-4xl font-bold md:text-6xl"
           >
-            ዘመናዊ ጣዕም <span className="text-gold">በባህላዊ ግሩም</span> አቀራረብ
+            ልዩ ጣዕም ያላቸው የፆም እና የፍስክ ምግቦች
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ function Menu() {
             transition={{ delay: 0.2 }}
             className="mt-4 max-w-2xl font-am text-muted-foreground"
           >
-            ሁሉንም የዝግጅት አይነቶች በሚስማማ መልኩ ለማስተናገድ ሰፊ ምርጫ አለን — ከጾም እስከ ፍስክ።
+            ከ ግሩም አቀራረብ ጋር ሁሉንም የዝግጅት አይነቶች በሚስማማ መልኩ እንግዶችን ለማስተናገድ የሚሆኑ ሰፊ አማራጮች አሉን ። ለልዩ ትዕዛዝ እና ለትልልቅ ዝግጅቶች የተለየ ቅናሽ ስላለን ደውለው ያማክሩን።
           </motion.p>
         </div>
       </section>
@@ -93,10 +93,7 @@ function Menu() {
           ))}
         </div>
 
-        <p className="mt-12 text-center font-am text-sm text-muted-foreground">
-          ለልዩ ምግቦች እና ለትልልቅ ዝግጅቶች ዋጋ በተናጥል ይተመናል። ለማማከር{" "}
-          <a href="tel:+251911000000" className="font-semibold text-gold hover:underline">ይደውሉ</a>።
-        </p>
+
       </section>
 
       <Footer />
