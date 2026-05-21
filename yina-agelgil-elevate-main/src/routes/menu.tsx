@@ -37,7 +37,7 @@ const fadeUp = {
 
 function Menu() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
 
       <section className="relative overflow-hidden border-b border-border bg-gradient-sage">
