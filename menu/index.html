@@ -15,15 +15,14 @@
       <nav>
         <a href="../" class="logo"><span class="logo-mark">Y</span><span><div class="logo-title">Yina Agelgil</div><div class="logo-sub">& Catering</div></span></a>
         <ul class="nav-links">
-          <li><a href="../">መነሻ</a></li>
-          <li><a href="../menu/" class="active">ሜኑ</a></li>
-          <li><a href="../about/">ስለ እኛ</a></li>
-          <li><a href="../contact/">ያግኙን</a></li>
+          <li><a href="../">Home</a></li>
+          <li><a href="../menu/" class="active">Menu</a></li>
+          <li><a href="../about/">About Us</a></li>
+          <li><a href="../contact/">Contact</a></li>
         </ul>
-        <a href="tel:+251911000000" class="btn btn-gold nav-cta">ይደውሉ</a>
         <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </nav>
-      <div class="mobile-nav"><ul><li><a href="../">መነሻ</a></li><li><a href="../menu/">ሜኑ</a></li><li><a href="../about/">ስለ እኛ</a></li><li><a href="../contact/">ያግኙን</a></li><li><a href="tel:+251911000000" class="btn btn-gold">Call Now</a></li></ul></div>
+      <div class="mobile-nav"><ul><li><a href="../">Home</a></li><li><a href="../menu/">Menu</a></li><li><a href="../about/">About Us</a></li><li><a href="../contact/">Contact</a></li><li><a href="tel:+251911000000" class="btn btn-gold">Call Now</a></li></ul></div>
     </header>
 
     <main>
@@ -37,42 +36,59 @@
 
       <section class="section" style="padding-top:3rem">
         <div class="container">
-          <div class="menu-tabs">
-            <button type="button" class="tab-btn active" data-tab="fast">የጾም አገልግል <span class="en">· Fasting</span></button>
-            <button type="button" class="tab-btn" data-tab="feast">የፍስክ አገልግል <span class="en">· Feasting</span></button>
-            <button type="button" class="tab-btn" data-tab="special">ባህላዊ ልዩ <span class="en">· Special</span></button>
+          <div class="grid-3 md-3 lg-4 menu-cards">
+            <div class="menu-category-card">
+              <img src="../assets/images/dish-beyaynetu.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <div class="overlay"></div>
+              <div class="content">
+                <h2 class="font-am">የጾም አገልግል</h2>
+                <p class="en-label">Fasting</p>
+              </div>
+            </div>
+            <div class="menu-category-card">
+              <img src="../assets/images/dish-doro.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <div class="overlay"></div>
+              <div class="content">
+                <h2 class="font-am">የፍስክ አገልግል</h2>
+                <p class="en-label">Feasting</p>
+              </div>
+            </div>
+            <div class="menu-category-card">
+              <img src="../assets/images/dish-kitfo.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <div class="overlay"></div>
+              <div class="content">
+                <h2 class="font-am">ባህላዊ ልዩ</h2>
+                <p class="en-label">Special</p>
+              </div>
+            </div>
+            <div class="menu-category-card">
+              <img src="../assets/images/event-corporate.jpg" alt="" aria-hidden="true" loading="lazy" />
+              <div class="overlay"></div>
+              <div class="content">
+                <h2 class="font-am">የኬተሪንግ አገልግሎት</h2>
+                <p class="en-label">Catering Service</p>
+              </div>
+            </div>
           </div>
 
-          <div id="fast" class="menu-panel active">
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-beyaynetu.jpg" alt="Vegan Beyaynetu" loading="lazy" /></div><div class="body"><div class="head"><h2>የጾም በያይነቱ</h2><span class="price">ETB 650</span></div><p class="en">Vegan Beyaynetu</p><p>ሽሮ፣ ምስር፣ ጎመን፣ ዱባ፣ ቲማቲም ሰላጣ።</p></div></article>
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-beyaynetu.jpg" alt="Shiro Fitfit" loading="lazy" /></div><div class="body"><div class="head"><h2>ሽሮ ፍትፍት</h2><span class="price">ETB 380</span></div><p class="en">Shiro Fitfit</p><p>በቅመም የበለፀገ ሽሮ ከእንጀራ ጋር።</p></div></article>
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-beyaynetu.jpg" alt="Misir Wat" loading="lazy" /></div><div class="body"><div class="head"><h2>ምስር ወጥ</h2><span class="price">ETB 420</span></div><p class="en">Misir Wat</p><p>ቀይ ምስር በቅመም በበርበሬ የተዘጋጀ።</p></div></article>
-          </div>
-
-          <div id="feast" class="menu-panel">
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-doro.jpg" alt="Doro Wat" loading="lazy" /></div><div class="body"><div class="head"><h2>ዶሮ ወጥ</h2><span class="price">ETB 780</span></div><p class="en">Doro Wat</p><p>ባህላዊ የዶሮ ወጥ ከእንቁላል ጋር።</p></div></article>
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-doro.jpg" alt="Sega Tibs" loading="lazy" /></div><div class="body"><div class="head"><h2>ስጋ ጥብስ</h2><span class="price">ETB 820</span></div><p class="en">Sega Tibs</p><p>በቅቤና በቅመም የተጠበሰ ስጋ።</p></div></article>
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-doro.jpg" alt="Bozena Shiro" loading="lazy" /></div><div class="body"><div class="head"><h2>ቦዘና ሽሮ</h2><span class="price">ETB 560</span></div><p class="en">Bozena Shiro</p><p>በስጋ የተዘጋጀ ልዩ ሽሮ።</p></div></article>
-          </div>
-
-          <div id="special" class="menu-panel">
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-kitfo.jpg" alt="Kitfo Special" loading="lazy" /></div><div class="body"><div class="head"><h2>ክትፎ ስፔሻል</h2><span class="price">ETB 950</span></div><p class="en">Kitfo Special</p><p>ክትፎ ከአይብ፣ ጎመንና ቅቤ ጋር።</p></div></article>
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/dish-kitfo.jpg" alt="Gored Gored" loading="lazy" /></div><div class="body"><div class="head"><h2>ጎረድ ጎረድ</h2><span class="price">ETB 980</span></div><p class="en">Gored Gored</p><p>በቅቤና ሚጥሚጣ የተዘጋጀ ጥሬ ስጋ።</p></div></article>
-            <article class="dish-card card menu-item"><div class="img-wrap"><img src="../assets/images/hero-feast.jpg" alt="Full Agelgil" loading="lazy" /></div><div class="body"><div class="head"><h2>ሙሉ አገልግል</h2><span class="price">ETB 2,400</span></div><p class="en">Full Agelgil</p><p>ለ4–6 ሰዎች የተዘጋጀ ሙሉ ድግስ።</p></div></article>
-          </div>
-
-          <p class="note">ለልዩ ምግቦች እና ለትልልቅ ዝግጅቶች ዋጋ በተናጥል ይተመናል። ለማማከር <a href="tel:+251911000000" class="text-gold" style="font-weight:600">ይደውሉ</a>።</p>
+          <p class="note" style="margin-top:3rem">ለልዩ ምግቦች እና ለትልልቅ ዝግጅቶች ዋጋ በተናጥል ይተመናል። ለማማከር <a href="tel:+251911000000" class="text-gold" style="font-weight:600">ይደውሉ</a>።</p>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div class="footer-brand"><div class="logo"><span class="logo-mark" style="width:3rem;height:3rem;font-size:1.25rem">Y</span><span><div class="logo-title" style="font-size:1.25rem">Yina Agelgil & Catering</div></span></div><p>በአዲስ አበባ የተመሰረተ ዘመናዊ የአገልግል እና ካተሪንግ አገልግሎት።</p></div>
-        <div class="footer-col"><h3>Quick Links</h3><ul><li><a href="../">Home</a></li><li><a href="../menu/">Menu</a></li><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li></ul></div>
-        <div class="footer-col"><h3>Contact</h3><ul><li class="row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+251911000000">+251 911 000 000</a></li></ul></div>
+    <footer style="padding:0;margin-top:0;border-top:1px solid var(--border);background:var(--gradient-sage)">
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:0.875rem 1.25rem">
+        <div style="display:flex;align-items:center;gap:0.625rem">
+          <span class="logo-mark" style="width:2rem;height:2rem;font-size:0.8125rem">Y</span>
+          <span><div class="logo-title" style="font-size:0.8125rem">Yina Agelgil</div><div class="logo-sub" style="font-size:0.5625rem">& Catering</div></span>
+        </div>
+        <ul style="display:flex;align-items:center;gap:1rem;list-style:none;margin:0;padding:0">
+          <li><a href="../" style="font-size:0.75rem;font-family:var(--font-am);font-weight:500">Home</a></li>
+          <li><a href="../menu/" style="font-size:0.75rem;font-family:var(--font-am);font-weight:500">Menu</a></li>
+          <li><a href="../about/" style="font-size:0.75rem;font-family:var(--font-am);font-weight:500">About Us</a></li>
+          <li><a href="../contact/" style="font-size:0.75rem;font-family:var(--font-am);font-weight:500">Contact</a></li>
+        </ul>
       </div>
-      <div class="container footer-bottom"><p>© <span id="year"></span> Yina Agelgil & Catering.</p></div>
     </footer>
     <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
     <script src="../js/main.js"></script>

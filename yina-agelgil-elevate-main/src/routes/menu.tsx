@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import doroImg from "@/assets/dish-doro.jpg";
 import beyaynetuImg from "@/assets/dish-beyaynetu.jpg";
+import doroImg from "@/assets/dish-doro.jpg";
 import kitfoImg from "@/assets/dish-kitfo.jpg";
-import heroImg from "@/assets/hero-feast.jpg";
+import corporateImg from "@/assets/event-corporate.jpg";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -22,46 +21,21 @@ export const Route = createFileRoute("/menu")({
   component: Menu,
 });
 
-type Item = { name: string; en: string; desc: string; price: string; img: string };
-type Category = { id: string; label: string; en: string; items: Item[] };
+const categories = [
+  { id: "fast", label: "የጾም አገልግል", en: "Fasting", img: beyaynetuImg },
+  { id: "feast", label: "የፍስክ አገልግል", en: "Feasting", img: doroImg },
+  { id: "special", label: "ባህላዊ ልዩ", en: "Special", img: kitfoImg },
+  { id: "catering", label: "የኬተሪንግ አገልግሎት", en: "Catering Service", img: corporateImg },
+] as const;
 
-const categories: Category[] = [
-  {
-    id: "fast",
-    label: "የጾም አገልግል",
-    en: "Fasting platters",
-    items: [
-      { name: "የጾም በያይነቱ", en: "Vegan Beyaynetu", desc: "ሽሮ፣ ምስር፣ ጎመን፣ ዱባ፣ ቲማቲም ሰላጣ።", price: "ETB 650", img: beyaynetuImg },
-      { name: "ሽሮ ፍትፍት", en: "Shiro Fitfit", desc: "በቅመም የበለፀገ ሽሮ ከእንጀራ ጋር።", price: "ETB 380", img: beyaynetuImg },
-      { name: "ምስር ወጥ", en: "Misir Wat", desc: "ቀይ ምስር በቅመም በበርበሬ የተዘጋጀ።", price: "ETB 420", img: beyaynetuImg },
-    ],
-  },
-  {
-    id: "feast",
-    label: "የፍስክ አገልግል",
-    en: "Feasting platters",
-    items: [
-      { name: "ዶሮ ወጥ", en: "Doro Wat", desc: "ባህላዊ የዶሮ ወጥ ከእንቁላል ጋር።", price: "ETB 780", img: doroImg },
-      { name: "ስጋ ጥብስ", en: "Sega Tibs", desc: "በቅቤና በቅመም የተጠበሰ ስጋ።", price: "ETB 820", img: doroImg },
-      { name: "ቦዘና ሺሮ", en: "Bozena Shiro", desc: "በስጋ የተዘጋጀ ልዩ ሽሮ።", price: "ETB 560", img: doroImg },
-    ],
-  },
-  {
-    id: "special",
-    label: "ባህላዊ ልዩ አገልግል",
-    en: "Special traditional",
-    items: [
-      { name: "ክትፎ ስፔሻል", en: "Kitfo Special", desc: "ክትፎ ከአይብ፣ ጎመንና ቅቤ ጋር።", price: "ETB 950", img: kitfoImg },
-      { name: "ጎረድ ጎረድ", en: "Gored Gored", desc: "በቅቤና ሚጥሚጣ የተዘጋጀ ጥሬ ስጋ።", price: "ETB 980", img: kitfoImg },
-      { name: "ሙሉ አገልግል", en: "Full Agelgil", desc: "ለ4–6 ሰዎች የተዘጋጀ ሙሉ ድግስ።", price: "ETB 2,400", img: heroImg },
-    ],
-  },
-];
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+};
 
 function Menu() {
-  const [active, setActive] = useState(categories[0].id);
-  const current = categories.find((c) => c.id === active)!;
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -95,56 +69,29 @@ function Menu() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-14 md:px-8">
-        <div className="mb-10 flex flex-wrap gap-3">
-          {categories.map((c) => (
-            <button
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {categories.map((c, i) => (
+            <motion.div
               key={c.id}
-              onClick={() => setActive(c.id)}
-              className={`rounded-full px-5 py-2.5 font-am text-sm font-semibold transition ${
-                active === c.id
-                  ? "bg-gradient-gold text-primary-foreground shadow-elegant"
-                  : "bg-card text-foreground hover:bg-secondary shadow-soft"
-              }`}
+              {...fadeUp}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              className="group relative min-h-[280px] overflow-hidden rounded-2xl shadow-soft transition hover:-translate-y-1 hover:shadow-elegant"
             >
-              {c.label} <span className="text-xs opacity-70">· {c.en}</span>
-            </button>
+              <img
+                src={c.img}
+                alt=""
+                aria-hidden
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+              <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-gold opacity-20 transition duration-500 group-hover:scale-150" />
+              <div className="relative flex h-full min-h-[280px] flex-col items-center justify-center p-10 text-center">
+                <h2 className="font-am text-3xl font-bold text-white">{c.label}</h2>
+                <p className="mt-2 text-lg uppercase tracking-widest text-gold">{c.en}</p>
+              </div>
+            </motion.div>
           ))}
         </div>
-
-        <motion.div
-          key={current.id}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-        >
-          {current.items.map((item, i) => (
-            <motion.article
-              key={item.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08 }}
-              className="group overflow-hidden rounded-2xl bg-card shadow-soft transition hover:-translate-y-1 hover:shadow-elegant"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={item.img}
-                  alt={`${item.en} — ${item.name} Ethiopian dish`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h2 className="font-display text-xl font-bold">{item.name}</h2>
-                  <span className="font-display text-lg font-bold text-gold">{item.price}</span>
-                </div>
-                <p className="text-xs uppercase tracking-widest text-muted-foreground">{item.en}</p>
-                <p className="mt-3 font-am text-sm text-muted-foreground">{item.desc}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
 
         <p className="mt-12 text-center font-am text-sm text-muted-foreground">
           ለልዩ ምግቦች እና ለትልልቅ ዝግጅቶች ዋጋ በተናጥል ይተመናል። ለማማከር{" "}

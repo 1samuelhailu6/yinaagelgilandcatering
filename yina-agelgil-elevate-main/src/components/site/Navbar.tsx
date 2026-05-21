@@ -3,17 +3,17 @@ import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  { to: "/", label: "መነሻ", en: "Home" },
-  { to: "/menu", label: "ሜኑ", en: "Menu" },
-  { to: "/about", label: "ስለ እኛ", en: "About" },
-  { to: "/contact", label: "ያግኙን", en: "Contact" },
+  { to: "/", label: "Home" },
+  { to: "/menu", label: "Menu" },
+  { to: "/about", label: "About Us" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 glass">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 relative">
         <Link to="/" className="flex items-center gap-2 group">
           <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-gold text-primary-foreground font-display text-lg font-bold shadow-soft transition-transform group-hover:scale-105">
             Y
@@ -24,7 +24,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1">
           {links.map((l) => (
             <li key={l.to}>
               <Link
@@ -38,15 +38,6 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-
-        <div className="hidden md:flex">
-          <a
-            href="tel:+251911000000"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:scale-[1.03] hover:shadow-elegant"
-          >
-            <Phone className="h-4 w-4" /> ይደውሉ
-          </a>
-        </div>
 
         <button
           aria-label="Toggle menu"
@@ -67,7 +58,7 @@ export function Navbar() {
                   onClick={() => setOpen(false)}
                   className="block rounded-lg px-4 py-3 font-am font-medium hover:bg-secondary"
                 >
-                  {l.label} <span className="text-xs text-muted-foreground">— {l.en}</span>
+                  {l.label}
                 </Link>
               </li>
             ))}

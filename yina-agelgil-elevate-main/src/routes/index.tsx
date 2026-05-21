@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, Heart, Leaf, ShieldCheck, Sparkles, Star, Utensils } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import heroImg from "@/assets/hero-feast.jpg";
+import heroImg from "@/assets/hero.webp";
 import doroImg from "@/assets/dish-doro.jpg";
 import beyaynetuImg from "@/assets/dish-beyaynetu.jpg";
 import kitfoImg from "@/assets/dish-kitfo.jpg";
@@ -77,15 +77,6 @@ function Home() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom,_color-mix(in_oklab,var(--cream)_55%,transparent),transparent_60%)]" />
 
         <div className="mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-6 py-28 md:px-8">
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex w-fit items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-cream"
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Addis Ababa · Ethiopia
-          </motion.span>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,24 +115,6 @@ function Home() {
             >
               ያግኙን
             </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="mt-16 flex flex-wrap items-center gap-8 text-white/80"
-          >
-            {[
-              ["10+", "Years experience"],
-              ["500+", "Events catered"],
-              ["100%", "Halal & hygienic"],
-            ].map(([n, l]) => (
-              <div key={l}>
-                <div className="font-display text-3xl font-bold text-gold">{n}</div>
-                <div className="text-xs uppercase tracking-widest">{l}</div>
-              </div>
-            ))}
           </motion.div>
         </div>
       </section>
