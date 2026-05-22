@@ -1,6 +1,7 @@
+import { useRef, useCallback, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ChevronRight, Heart, Leaf, Star, Utensils } from "lucide-react";
+import { ChevronRight, Heart, Leaf, Sparkles, Star, Utensils } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import heroImg from "@/assets/hero.webp";
@@ -73,6 +74,45 @@ const trust = [
 ];
 
 function Home() {
+  const dragRef = useRef<{ el: HTMLElement; startX: number; startTransform: number } | null>(null);
+
+  const handleMarqueeStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
+    const el = e.currentTarget as HTMLElement;
+    const cx = "touches" in e ? e.touches[0].clientX : e.clientX;
+    el.style.animationPlayState = "paused";
+    const style = window.getComputedStyle(el);
+    const m = style.transform.match(/matrix\([^,]+,[^,]+,[^,]+,[^,]+,\s*([\d.-]+)/);
+    const currentX = m ? parseFloat(m[1]) : 0;
+    el.style.transform = `translateX(${currentX}px)`;
+    dragRef.current = { el, startX: cx, startTransform: currentX };
+  }, []);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent | TouchEvent) => {
+      if (!dragRef.current) return;
+      e.preventDefault();
+      const cx = "touches" in e ? e.touches[0].clientX : e.clientX;
+      const dx = cx - dragRef.current.startX;
+      dragRef.current.el.style.transform = `translateX(${dragRef.current.startTransform + dx}px)`;
+    };
+    const onEnd = () => {
+      if (!dragRef.current) return;
+      dragRef.current.el.style.transform = "";
+      dragRef.current.el.style.animationPlayState = "running";
+      dragRef.current = null;
+    };
+    document.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseup", onEnd);
+    document.addEventListener("touchmove", onMove, { passive: false });
+    document.addEventListener("touchend", onEnd);
+    return () => {
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", onEnd);
+      document.removeEventListener("touchmove", onMove);
+      document.removeEventListener("touchend", onEnd);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
@@ -116,18 +156,12 @@ function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <Link
-              to="/menu"
+            <a
+              href="tel:+251978260445"
               className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-7 py-3.5 font-am font-semibold text-primary-foreground shadow-elegant transition hover:scale-[1.04]"
             >
-              ሜኑ ይመልከቱ <ChevronRight className="h-4 w-4" />
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 font-am font-semibold text-white transition hover:bg-white/15"
-            >
-              ያግኙን
-            </Link>
+              Call Now
+            </a>
           </motion.div>
         </div>
       </section>
@@ -174,7 +208,7 @@ function Home() {
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <motion.div {...fadeUp} className="mb-12 text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">Why choose us</p>
-            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">ለምን እኛን ይመርጡ?</h2>
+            <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">ለምን እኛን ይመርጡናል?</h2>
           </motion.div>
           <div className="grid gap-6 md:grid-cols-3">
             {trust.map((t, i) => (
@@ -192,7 +226,7 @@ function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
                 <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-gold opacity-20 transition duration-500 group-hover:scale-150" />
-                <div className="relative flex h-full min-h-[280px] flex-col justify-end p-6">
+                <div className="relative flex h-full min-h-[280px] flex-col items-center justify-end p-6 text-center">
                   <span className="text-3xl">{t.icon}</span>
                   <h3 className="mt-3 font-am text-xl font-bold text-white">{t.title}</h3>
                   <p className="mt-2 font-am text-sm text-white/80">{t.desc}</p>
@@ -251,7 +285,7 @@ function Home() {
                 </>
               )}
               <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-gold opacity-10 transition group-hover:scale-150" />
-              <div className={`grid h-12 w-12 place-items-center rounded-xl ${i < 5 ? "bg-white/15 text-white" : "bg-secondary text-gold"}`}>
+              <div className={`grid h-12 w-12 place-items-center rounded-xl ${i < 5 ? "bg-background/15 text-white" : "bg-secondary text-gold"}`}>
                 <e.icon className="h-5 w-5" />
               </div>
               <h3 className={`mt-5 font-am text-2xl font-bold ${i < 5 ? "text-white" : ""}`}>{e.am}</h3>
@@ -268,15 +302,13 @@ function Home() {
       {/* GALLERY */}
       <section className="overflow-hidden pb-24">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
-          <motion.div {...fadeUp} className="mb-10">
+          <motion.div {...fadeUp} className="mb-12 text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">Gallery</p>
             <h2 className="mt-3 font-display text-4xl font-bold md:text-5xl">ከስራዎቻችን ጥቂቶቹ</h2>
           </motion.div>
         </div>
         <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
-          <div className="flex gap-6 animate-marquee">
+          <div className="flex gap-6 animate-marquee cursor-grab active:cursor-grabbing" onMouseDown={handleMarqueeStart} onTouchStart={handleMarqueeStart}>
             {[gallery1, gallery2, gallery3, gallery4, gallery5, gallery6, gallery1, gallery2, gallery3, gallery4, gallery5, gallery6].map((img, i) => (
               <div
                 key={i}
@@ -295,7 +327,7 @@ function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="overflow-hidden bg-gradient-sage py-24">
+      <section className="overflow-hidden bg-gradient-sage pb-24">
         <div className="mx-auto max-w-7xl px-6 md:px-8">
           <motion.div {...fadeUp} className="mb-12 text-center">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">Testimonials</p>
@@ -303,11 +335,9 @@ function Home() {
           </motion.div>
         </div>
         <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[color:var(--cream)] to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[color:var(--cream)] to-transparent" />
-          <div className="flex gap-6 animate-marquee">
+          <div className="flex gap-6 animate-marquee cursor-grab active:cursor-grabbing" onMouseDown={handleMarqueeStart} onTouchStart={handleMarqueeStart}>
             {[...testimonials, ...testimonials].map((t, i) => (
-              <figure key={i} className="w-[340px] flex-shrink-0 rounded-2xl glass p-7 shadow-soft">
+              <figure key={i} className="w-[340px] flex-shrink-0 rounded-2xl bg-white p-7 shadow-soft">
                 <div className="flex gap-1 text-gold">
                   {Array.from({ length: 5 }).map((_, j) => (
                     <Star key={j} className="h-4 w-4 fill-current" />
@@ -330,7 +360,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-7xl px-6 py-24 md:px-8">
+      <section className="mx-auto max-w-7xl px-6 md:px-8">
         <motion.div
           {...fadeUp}
           className="overflow-hidden rounded-3xl bg-gradient-to-br from-[color:var(--ink)] to-[color:color-mix(in_oklab,var(--gold)_30%,var(--ink))] p-10 text-center shadow-elegant md:p-16"
@@ -343,7 +373,7 @@ function Home() {
             <a href="tel:+251911000000" className="rounded-full bg-gradient-gold px-7 py-3.5 font-am font-semibold text-primary-foreground shadow-elegant transition hover:scale-[1.04]">
               ይደውሉ +251 911 000 000
             </a>
-            <Link to="/contact" className="rounded-full border border-white/30 px-7 py-3.5 font-am font-semibold text-white transition hover:bg-white/10">
+            <Link to="/contact" className="rounded-full border border-white/30 px-7 py-3.5 font-am font-semibold text-white transition hover:bg-background/10">
               መልዕክት ይላኩ
             </Link>
           </div>

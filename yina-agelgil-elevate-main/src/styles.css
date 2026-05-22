@@ -50,12 +50,12 @@
 :root {
   --radius: 0.75rem;
   /* Brand: #D8E2DC primary sage, #B7990D gold accent */
-  --background: oklch(0.965 0.012 145);          /* near #D8E2DC tint */
+  --background: oklch(0.93 0.018 130);           /* #D8E2DC exact */
   --cream: oklch(0.93 0.018 130);                 /* #D8E2DC exact-ish */
   --foreground: oklch(0.22 0.025 145);
   --ink: oklch(0.18 0.02 145);
 
-  --card: oklch(0.985 0.008 140);
+  --card: oklch(0.93 0.018 130);
   --card-foreground: oklch(0.22 0.025 145);
   --popover: oklch(0.985 0.008 140);
   --popover-foreground: oklch(0.22 0.025 145);
@@ -109,7 +109,7 @@
 
 @layer utilities {
   .glass {
-    background: color-mix(in oklab, var(--card) 70%, transparent);
+    background: color-mix(in oklab, var(--background) 70%, transparent);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid color-mix(in oklab, var(--gold) 18%, transparent);
@@ -118,10 +118,18 @@
   .bg-gold { background: var(--gold); }
   .bg-gradient-gold { background: var(--gradient-gold); }
   .bg-gradient-hero { background: var(--gradient-hero); }
-  .bg-gradient-sage { background: var(--gradient-sage); }
-  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .bg-gradient-sage { background: var(--gradient-sage); }  .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
 
+  .bg-header-footer {
+    background-color: #ccd8d0;
+    background-image: 
+      linear-gradient(45deg, rgba(0,0,0,0.015) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(0,0,0,0.015) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.015) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.015) 75%);
+    background-size: 6px 6px;
+  }
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }

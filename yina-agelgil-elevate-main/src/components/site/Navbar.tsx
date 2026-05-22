@@ -12,16 +12,10 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 glass">
+    <header className="sticky top-0 z-50 bg-header-footer border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8 relative">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-gold text-primary-foreground font-display text-lg font-bold shadow-soft transition-transform group-hover:scale-105">
-            Y
-          </span>
-          <div className="leading-tight">
-            <div className="font-display text-base font-bold tracking-tight">Yina Agelgil</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">& Catering</div>
-          </div>
+          <div className="font-display text-base font-bold tracking-tight">Yina Agelgil & Catering</div>
         </Link>
 
         <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1">
@@ -56,6 +50,8 @@ export function Navbar() {
                 <Link
                   to={l.to}
                   onClick={() => setOpen(false)}
+                  activeOptions={{ exact: l.to === "/" }}
+                  activeProps={{ className: "text-gold underline underline-offset-4" }}
                   className="block rounded-lg px-4 py-3 font-am font-medium hover:bg-secondary"
                 >
                   {l.label}
@@ -65,7 +61,7 @@ export function Navbar() {
             <li className="pt-2">
               <a
                 href="tel:+251911000000"
-                className="flex items-center justify-center gap-2 rounded-full bg-gradient-gold px-5 py-3 text-sm font-semibold text-primary-foreground shadow-soft"
+                className="flex items-center justify-center gap-2 rounded-full border border-gold px-5 py-3 text-sm font-semibold text-gold"
               >
                 <Phone className="h-4 w-4" /> Call Now
               </a>

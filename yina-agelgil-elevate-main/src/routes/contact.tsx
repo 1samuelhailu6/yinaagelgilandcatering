@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Clock, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Music2, Phone, Send } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 
@@ -36,7 +36,7 @@ function Contact() {
             transition={{ delay: 0.1 }}
             className="mt-3 max-w-3xl font-am text-4xl font-bold md:text-6xl"
           >
-            ለቀጣይ ዝግጅትዎ <span className="text-gold">እንተባበር</span>
+            ለቀጣይ ዝግጅትዎ <span className="text-gold">ደውለው ይዘዙን</span>
           </motion.h1>
         </div>
       </section>
@@ -52,7 +52,7 @@ function Contact() {
               e.preventDefault();
               setSent(true);
             }}
-            className="lg:col-span-3 rounded-3xl bg-card p-8 shadow-soft md:p-10"
+            className="lg:col-span-3 rounded-3xl bg-white p-8 shadow-soft md:p-10"
           >
             <h2 className="font-display text-2xl font-bold">Send us a message</h2>
             <p className="mt-1 font-am text-sm text-muted-foreground">በ24 ሰዓት ውስጥ ምላሽ እንሰጣለን።</p>
@@ -101,64 +101,22 @@ function Contact() {
             transition={{ delay: 0.1 }}
             className="lg:col-span-2 space-y-4"
           >
-            <ContactCard icon={Phone} title="Call now · ይደውሉ" desc="+251 911 000 000" href="tel:+251911000000" cta="Call" />
-            <ContactCard icon={MessageCircle} title="WhatsApp" desc="በፍጥነት ለማነጋገር" href="https://wa.me/251911000000" cta="Chat" />
-            <ContactCard icon={Send} title="Telegram" desc="@yinaagelgil" href="https://t.me/yinaagelgil" cta="Open" />
+            <ContactCard icon={Phone} title="Call now · ይደውሉ" desc="+251 978 260 445" href="tel:+251978260445" cta="Call" />
+            <ContactCard icon={Music2} title="TikTok" desc="@yina_agelgil" href="https://www.tiktok.com/@yina_agelgil" cta="Follow" />
+            <ContactCard icon={Send} title="Telegram" desc="Abayeagelgil1" href="https://t.me/Abayeagelgil1" cta="Open" />
             <ContactCard icon={Mail} title="Email" desc="hello@yinaagelgil.com" href="mailto:hello@yinaagelgil.com" cta="Email" />
 
-            <div className="rounded-2xl glass p-6 shadow-soft">
+            <a href="https://maps.app.goo.gl/yMPHXptZBHFdiEsL7" target="_blank" rel="noopener noreferrer" className="group block rounded-2xl bg-white p-6 shadow-soft">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-1 h-5 w-5 text-gold" />
                 <div>
                   <h3 className="font-am font-bold">አድራሻ · Address</h3>
-                  <p className="mt-1 font-am text-sm text-muted-foreground">Bole Sub-city, Addis Ababa, Ethiopia</p>
+                  <p className="mt-1 font-am text-sm text-muted-foreground">Bethel Posta Bet, Addis Ababa, Ethiopia</p>
                 </div>
               </div>
-              <div className="mt-4 flex items-start gap-3">
-                <Clock className="mt-1 h-5 w-5 text-gold" />
-                <div>
-                  <h3 className="font-am font-bold">የስራ ሰዓት · Hours</h3>
-                  <p className="mt-1 font-am text-sm text-muted-foreground">Mon–Sun · 8:00 – 22:00</p>
-                </div>
-              </div>
-            </div>
+              <span className="mt-2 block text-xs font-semibold uppercase tracking-widest text-gold opacity-0 transition group-hover:opacity-100">Get Directions →</span>
+            </a>
           </motion.aside>
-        </div>
-      </section>
-
-      {/* Map */}
-      <section className="mx-auto max-w-7xl px-6 pb-24 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="overflow-hidden rounded-3xl shadow-elegant"
-        >
-          <iframe
-            title="Yina Agelgil & Catering location in Addis Ababa"
-            src="https://www.google.com/maps?q=Bole,+Addis+Ababa,+Ethiopia&output=embed"
-            width="100%"
-            height="460"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="block w-full border-0"
-          />
-        </motion.div>
-        <div className="mt-5 flex flex-wrap justify-center gap-4">
-          <a
-            href="https://www.google.com/maps/dir/?api=1&destination=Bole,+Addis+Ababa,+Ethiopia"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-gold px-6 py-3 font-am font-semibold text-primary-foreground shadow-soft transition hover:scale-[1.03]"
-          >
-            <MapPin className="h-4 w-4" /> Get Directions
-          </a>
-          <a
-            href="tel:+251911000000"
-            className="inline-flex items-center gap-2 rounded-full border border-gold px-6 py-3 font-am font-semibold text-gold transition hover:bg-gold hover:text-primary-foreground"
-          >
-            <Phone className="h-4 w-4" /> Call Now
-          </a>
         </div>
       </section>
 
@@ -180,7 +138,7 @@ function Field({ label, required, children }: { label: string; required?: boolea
 
 function ContactCard({ icon: Icon, title, desc, href, cta }: { icon: React.ComponentType<{ className?: string }>; title: string; desc: string; href: string; cta: string }) {
   return (
-    <a href={href} className="group flex items-center justify-between gap-4 rounded-2xl bg-card p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-elegant">
+    <a href={href} className="group flex items-center justify-between gap-4 rounded-2xl bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-elegant">
       <div className="flex items-center gap-4">
         <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-gold text-primary-foreground">
           <Icon className="h-5 w-5" />
