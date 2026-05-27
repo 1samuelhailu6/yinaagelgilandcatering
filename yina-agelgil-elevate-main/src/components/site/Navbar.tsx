@@ -58,12 +58,19 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
-            <li className="pt-2">
+            <li className="pt-3">
               <a
                 href="tel:+251911000000"
-                className="flex items-center justify-center gap-2 rounded-full border border-gold px-5 py-3 text-sm font-semibold text-gold"
+                className="group flex items-center gap-4 rounded-2xl bg-white p-4 shadow-soft transition hover:-translate-y-0.5 hover:shadow-elegant"
               >
-                <Phone className="h-4 w-4" /> Call Now
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-gold text-primary-foreground">
+                  <Phone className="h-5 w-5" />
+                </div>
+                <div className="flex-1">
+                  <div className="font-am font-bold">Call Now · ይደውሉ</div>
+                  <div className="text-xs text-muted-foreground">+251 911 000 000</div>
+                </div>
+                <span className="text-xs font-semibold uppercase tracking-widest text-gold opacity-0 transition group-hover:opacity-100">Call →</span>
               </a>
             </li>
           </ul>

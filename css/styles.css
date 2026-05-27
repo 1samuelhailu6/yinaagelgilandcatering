@@ -41,6 +41,16 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   width: 100%;
+  background: var(--background);
+}
+
+@keyframes page-in {
+  from { transform: scale(1.008); }
+  to { transform: scale(1); }
+}
+
+body {
+  animation: page-in 0.3s ease;
 }
 
 body {
@@ -171,13 +181,13 @@ h4 {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #ccd8d0;
+  background: #b7990d;
   background-image: 
-    linear-gradient(45deg, rgba(0,0,0,0.015) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(0,0,0,0.015) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.015) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.015) 75%);
-  background-size: 6px 6px;
+    linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0,0,0,0.04) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.04) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.04) 75%);
+  background-size: 28px 28px;
 }
 
 .site-header nav {
@@ -266,10 +276,35 @@ h4 {
   cursor: pointer;
 }
 
+.site-header .logo-title,
+.site-header .logo-sub {
+  color: #fff;
+}
+
+.site-header .nav-links a {
+  color: #fff;
+}
+
+.site-header .nav-links a:hover,
+.site-header .nav-links a.active {
+  color: #000;
+}
+
+.site-header .mobile-nav a {
+  color: #fff;
+}
+
+.site-header .mobile-nav a:hover {
+  background: rgba(0,0,0,0.1);
+}
+
+.site-header .mobile-nav a.active {
+  color: #000;
+}
+
 .mobile-nav {
   display: none;
-  border-top: 1px solid var(--border);
-  background: var(--card);
+  background: #d4b63e;
 }
 
 .mobile-nav.open {
@@ -303,6 +338,31 @@ h4 {
   width: 100%;
   justify-content: center;
   margin-top: 0.5rem;
+}
+
+.mobile-nav .call-now {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: var(--gradient-gold);
+  color: var(--primary-foreground);
+  font-family: var(--font-am);
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: transform 0.2s;
+  margin-top: 0.5rem;
+}
+
+.mobile-nav .call-now:hover {
+  transform: translateY(-1px);
+}
+
+.mobile-nav .call-now svg {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
@@ -1124,13 +1184,29 @@ textarea:focus {
 .site-footer {
   margin-top: 6rem;
   border-top: 1px solid var(--border);
-  background: #ccd8d0;
+  background: #b7990d;
   background-image: 
-    linear-gradient(45deg, rgba(0,0,0,0.015) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(0,0,0,0.015) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.015) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.015) 75%);
-  background-size: 6px 6px;
+    linear-gradient(45deg, rgba(0,0,0,0.04) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0,0,0,0.04) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.04) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.04) 75%);
+  background-size: 28px 28px;
+}
+
+.site-footer .logo-title {
+  color: #fff;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.site-footer a:hover {
+  color: #000;
+}
+
+.site-footer a.active {
+  color: #000;
 }
 
 .footer-grid {
@@ -1280,4 +1356,14 @@ textarea:focus {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+@media (max-width: 767px) {
+  .site-footer .logo {
+    display: none !important;
+  }
+
+  .site-footer ul {
+    flex-wrap: nowrap !important;
+  }
 }
