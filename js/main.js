@@ -131,3 +131,15 @@
     observer.observe(el);
   });
 })();
+
+/* Dark mode toggle */
+(function () {
+  var toggle = document.querySelector('.dark-toggle');
+  var html = document.documentElement;
+  if (!toggle) return;
+
+  toggle.addEventListener('click', function () {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+  });
+})();

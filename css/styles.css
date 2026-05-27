@@ -29,6 +29,32 @@
   --max-w: 80rem;
 }
 
+.dark {
+  --background: #1a1f1c;
+  --cream: #1a1f1c;
+  --foreground: #e2e8e4;
+  --card: #242a27;
+  --muted-foreground: #8a9a92;
+  --secondary: #242a27;
+  --border: #2d3430;
+  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.4);
+  --shadow-elegant: 0 25px 60px -20px rgba(183, 153, 13, 0.2);
+  --gradient-sage: linear-gradient(180deg, #1a1f1c 0%, #1a1f1c 100%);
+}
+
+.dark .testimonial {
+  background: var(--card);
+}
+
+.dark .contact-card,
+.dark .address-card {
+  background: var(--card) !important;
+}
+
+.dark .form-card {
+  background: var(--card) !important;
+}
+
 *,
 *::before,
 *::after {
@@ -265,15 +291,47 @@ h4 {
   display: none;
 }
 
-.menu-toggle {
+.menu-toggle,
+.dark-toggle {
   display: grid;
   place-items: center;
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--card);
+  border: 1px solid #000;
+  color: #000;
   cursor: pointer;
+  flex-shrink: 0;
+}
+
+.menu-toggle {
+  background: #b7990d;
+}
+
+.dark-toggle {
+  background: transparent;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dark-toggle .sun-icon {
+  display: none;
+}
+
+.dark-toggle .moon-icon {
+  display: block;
+}
+
+.dark .dark-toggle .sun-icon {
+  display: block;
+}
+
+.dark .dark-toggle .moon-icon {
+  display: none;
 }
 
 .site-header .logo-title,
