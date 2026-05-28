@@ -372,6 +372,10 @@ h4 {
 .mobile-nav ul {
   list-style: none;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .mobile-nav a {
@@ -380,6 +384,7 @@ h4 {
   border-radius: 0.5rem;
   font-family: var(--font-am);
   font-weight: 500;
+  text-align: center;
 }
 
 .mobile-nav a:hover {
@@ -431,6 +436,23 @@ h4 {
 
   .menu-toggle {
     display: none;
+  }
+
+  .site-footer a[aria-label="Telegram"] {
+    order: 10;
+    margin-left: auto;
+  }
+
+  .site-footer a[aria-label="TikTok"] {
+    order: 10;
+  }
+
+  .site-footer .logo {
+    order: 1;
+  }
+
+  .site-footer ul {
+    order: 2;
   }
 }
 
@@ -1422,6 +1444,11 @@ textarea:focus {
   }
 
   .site-footer ul {
-    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+  }
+
+  .site-footer ul a {
+    padding: 0.25rem 0.4rem !important;
+    font-size: 0.7rem !important;
   }
 }
