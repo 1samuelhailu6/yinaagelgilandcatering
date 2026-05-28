@@ -562,6 +562,12 @@ h4 {
 
 
 
+#about-desc,
+#menu-desc {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .section-label {
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -1442,6 +1448,11 @@ textarea:focus {
 }
 
 @media (max-width: 767px) {
+  #hero-desc {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
   .site-footer .logo {
     display: none !important;
   }
