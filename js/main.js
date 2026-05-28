@@ -160,3 +160,65 @@
     localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
   });
 })();
+
+/* Scroll reveal animations */
+(function () {
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  function initReveal() {
+    // Static selectors — just section headings
+    var selectors = [
+      '.section-label', '.section-title', '.section-desc',
+      '.cta-banner', '.stats-row', '.hero-stats',
+      '.page-header h1', '.page-header .section-label',
+      '.floating-badge', '.rounded-img', '.form-card',
+      '.address-card', '.contact-card', '.call-now'
+    ];
+
+    selectors.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        el.classList.add('reveal');
+      });
+    });
+
+    // Grids — stagger children
+    var grids = document.querySelectorAll('.grid-2, .grid-3, .lg-4, .menu-cards, .contact-grid');
+    grids.forEach(function (grid) {
+      var items = grid.children;
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.add('reveal');
+        items[i].style.setProperty('--reveal-delay', (i * 0.1) + 's');
+      }
+    });
+
+    // Menu tabs — re-run when active panel changes
+    document.querySelectorAll('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-tab');
+        var panel = document.getElementById(id);
+        if (panel) {
+          var items = panel.querySelectorAll('.dish-card');
+          items.forEach(function (el) { el.classList.add('reveal'); });
+          items.forEach(function (el) { observer.observe(el); });
+        }
+      });
+    });
+
+    // Observe all reveals
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+
+  initReveal();
+})();
