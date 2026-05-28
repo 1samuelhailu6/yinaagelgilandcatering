@@ -85,6 +85,7 @@ body {
   color: var(--foreground);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+
   overflow-x: hidden;
   width: 100%;
 }
@@ -558,6 +559,13 @@ h4 {
 .section {
   padding: 6rem 0;
 }
+
+p, .section-desc, blockquote, .hero p, .dish-card p, .icon-card p, .footer-brand p, .contact-card .info p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+
 
 .section-label {
   font-size: 0.75rem;
