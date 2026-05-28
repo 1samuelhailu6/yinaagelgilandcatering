@@ -560,11 +560,6 @@ h4 {
   padding: 6rem 0;
 }
 
-p, .section-desc, blockquote, .hero p, .dish-card p, .icon-card p, .footer-brand p, .contact-card .info p {
-  text-align: justify;
-  text-justify: inter-word;
-}
-
 
 
 .section-label {
