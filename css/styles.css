@@ -821,17 +821,7 @@ h4 {
 .marquee {
   display: flex;
   gap: 1.5rem;
-  animation: marquee 40s linear infinite;
   width: max-content;
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 .testimonial {

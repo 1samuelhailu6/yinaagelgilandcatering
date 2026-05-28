@@ -36,49 +36,66 @@
   });
 })();
 
-/* Make marquees draggable — pause on drag, resume on release */
+/* Animate marquees with JS — draggable, pauses on interaction */
 (function () {
-  const marquees = document.querySelectorAll(".marquee");
+  var marquees = document.querySelectorAll(".marquee");
   if (!marquees.length) return;
 
-  let dragState = null;
+  var offsets = [];
+  var running = [];
+  var dragState = null;
+  var rafId = null;
 
   function getClientX(e) {
     return e.touches ? e.touches[0].clientX : e.clientX;
   }
 
-  function onStart(e) {
-    const el = e.currentTarget;
-    const cx = getClientX(e);
-    el.style.animationPlayState = "paused";
+  marquees.forEach(function (el, i) {
+    offsets[i] = 0;
+    running[i] = true;
+    el.style.transform = "translateX(0px)";
+
+    el.addEventListener("mousedown", function (e) { onStart(e, i); });
+    el.addEventListener("touchstart", function (e) { onStart(e, i); }, { passive: true });
+  });
+
+  function stepMarquees() {
+    marquees.forEach(function (el, i) {
+      if (!running[i]) return;
+      var halfW = el.scrollWidth / 2;
+      offsets[i] -= 0.5;
+      if (offsets[i] <= -halfW) offsets[i] += halfW;
+      el.style.transform = "translateX(" + offsets[i] + "px)";
+    });
+    rafId = requestAnimationFrame(stepMarquees);
+  }
+
+  rafId = requestAnimationFrame(stepMarquees);
+
+  function onStart(e, idx) {
+    var el = e.currentTarget;
+    running[idx] = false;
     el.style.cursor = "grabbing";
-    const style = window.getComputedStyle(el);
-    const m = style.transform.match(/matrix\([^,]+,[^,]+,[^,]+,[^,]+,\s*([\d.-]+)/);
-    const currentX = m ? parseFloat(m[1]) : 0;
-    el.style.transform = "translateX(" + currentX + "px)";
-    dragState = { el, startX: cx, startTransform: currentX };
+    dragState = { el: el, startX: getClientX(e), offset: offsets[idx], idx: idx };
   }
 
   function onMove(e) {
     if (!dragState) return;
-    e.preventDefault();
-    const cx = getClientX(e);
-    const dx = cx - dragState.startX;
-    dragState.el.style.transform = "translateX(" + (dragState.startTransform + dx) + "px)";
+    var cx = getClientX(e);
+    var dx = cx - dragState.startX;
+    var pos = dragState.offset + dx;
+    dragState.el.style.transform = "translateX(" + pos + "px)";
+    dragState.currentPos = pos;
   }
 
   function onEnd() {
     if (!dragState) return;
-    dragState.el.style.transform = "";
-    dragState.el.style.animationPlayState = "running";
     dragState.el.style.cursor = "";
+    offsets[dragState.idx] = dragState.currentPos !== undefined ? dragState.currentPos : dragState.offset;
+    running[dragState.idx] = true;
     dragState = null;
   }
 
-  marquees.forEach(function (el) {
-    el.addEventListener("mousedown", onStart);
-    el.addEventListener("touchstart", onStart, { passive: true });
-  });
   document.addEventListener("mousemove", onMove);
   document.addEventListener("mouseup", onEnd);
   document.addEventListener("touchmove", onMove, { passive: false });
